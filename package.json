@@ -1,5 +1,5 @@
 {
-  "name": "mdx-vue-loader",
+  "name": "mdx-vue",
   "version": "1.0.0",
   "main": "dist/index.js",
   "module": "dist/es/index.js",
@@ -8,7 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "dev": "watch 'yarn build:es' src",
+    "dev": "watch 'yarn build' src",
     "build": "yarn build:cjs && yarn build:es",
     "build:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel src -d dist --copy-files",
     "build:es": "cross-env NODE_ENV=production BABEL_ENV=es babel src -d dist/es --copy-files"
@@ -17,12 +17,19 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "babel-preset-env": "^1.7.0",
     "cross-env": "^7.0.2",
     "watch": "^1.0.2"
   },
   "babel": {
     "presets": [
       "@babel/preset-env"
+    ],
+    "plugins": [
+      "transform-vue-jsx"
     ],
     "exclude": [
       "node_modules"

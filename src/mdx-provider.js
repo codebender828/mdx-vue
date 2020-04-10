@@ -5,10 +5,10 @@ export default {
   },
   provide() {
     return {
-      contextComponents: () => this.components
-    }
+      $mdxComponents: () => this.components
+    };
   },
   render() {
-    return <div>{this.$slots.default}</div>
+    return <div>{this.$slots.default}</div>;
   }
-}
+};
