@@ -8,7 +8,7 @@ export default {
       $mdxComponents: () => this.components
     };
   },
-  render() {
-    return <div>{this.$slots.default}</div>;
+  render(h) {
+    return h('div', this.$slots.default);
   }
 };

@@ -11,6 +11,7 @@ const DEFAULTS = {
  * @param {Vue.Component|String} type Element or tag to render
  * @param {Object|Array} props Props and attributes for element
  * @param {Array} children Array of child nodes for component
+ * @returns {Vue.VNode} VNode of final rendered element
  */
 export default function(type, props, children) {
 
@@ -41,6 +42,19 @@ export default function(type, props, children) {
   // Render final tag if component is not provided in context
   } else {
     tag = type
+
+    if (['a', 'input', 'img'].includes(tag)) {
+      const { attrs, ...domProps } = elProps
+      const data = {
+        attrs: attrs,
+        domProps
+      }
+
+      elProps = {
+        ...elProps,
+        ...data
+      }
+    }
   }
 
   return h(tag, elProps, children)
